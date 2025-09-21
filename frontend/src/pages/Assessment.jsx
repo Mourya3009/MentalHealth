@@ -34,7 +34,14 @@ const Assessment = () => {
         
         // Navigate to appropriate exercise page based on recommendation
         const exerciseType = response.data.exerciseType;
-        navigate(`/exercises/${exerciseType}`);
+        
+        // Pass the formData and full response data via state
+        navigate(`/exercises/${exerciseType}`, {
+          state: {
+            assessmentData: formData, // The raw answers from the user
+            recommendationDetails: response.data // Contains exerciseType, recommendation, averageScore, etc.
+          }
+        });
       }
     } catch (err) {
       console.error('Assessment submission error:', err);
