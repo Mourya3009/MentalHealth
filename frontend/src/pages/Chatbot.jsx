@@ -1,6 +1,6 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { useToast } from '../contexts/ToastContext.jsx';
-import axios from 'axios';
+import apiClient from '../utils/apiClient';
 
 const Chatbot = () => {
   const [message, setMessage] = useState('');
@@ -24,7 +24,7 @@ const Chatbot = () => {
 
   const fetchSuggestions = async () => {
     try {
-      const response = await axios.get('/api/chatbot/suggestions');
+      const response = await apiClient.get('/api/chatbot/suggestions');
       setSuggestions(response.data.suggestions);
     } catch (err) {
       console.error('Error fetching suggestions:', err);
@@ -43,7 +43,7 @@ const Chatbot = () => {
     setChatHistory(prev => [...prev, { type: 'user', message: userMessage }]);
 
     try {
-      const response = await axios.post('/api/chatbot/chat', {
+      const response = await apiClient.post('/api/chatbot/chat', {
         message: userMessage
       });
 

@@ -50,6 +50,8 @@ app.options('*', cors());
 // Add logging middleware
 app.use((req, res, next) => {
   console.log(`${new Date().toISOString()} - ${req.method} ${req.path} - Origin: ${req.headers.origin}`);
+  console.log('Cookies:', req.cookies);
+  console.log('Headers:', req.headers);
   next();
 });
 app.use(bodyParser.json());

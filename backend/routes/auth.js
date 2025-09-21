@@ -33,7 +33,9 @@ router.get("/captcha", (req, res) => {
   // Store captcha ID in cookie for 5 minutes
   res.cookie("captchaId", captchaId, { 
     maxAge: 5 * 60 * 1000, // 5 minutes
-    httpOnly: true 
+    httpOnly: true,
+    secure: process.env.NODE_ENV === "production",
+    sameSite: "none" // Changed for cross-origin
   });
   
   res.json({ captcha });
@@ -82,7 +84,7 @@ router.post("/register", async (req, res) => {
       maxAge: 24 * 60 * 60 * 1000, // 24 hours
       httpOnly: true,
       secure: process.env.NODE_ENV === "production",
-      sameSite: "lax"
+      sameSite: "none" // Changed from "lax" to "none" for cross-origin
     });
 
     res.status(201).json({
@@ -141,7 +143,7 @@ router.post("/login", async (req, res) => {
       maxAge: 24 * 60 * 60 * 1000, // 24 hours
       httpOnly: true,
       secure: process.env.NODE_ENV === "production",
-      sameSite: "lax"
+      sameSite: "none" // Changed from "lax" to "none" for cross-origin
     });
 
     res.json({

@@ -1,11 +1,12 @@
 import React, { createContext, useContext, useState, useEffect } from 'react';
-import axios from 'axios';
+import apiClient from '../utils/apiClient';
 
 const AuthContext = createContext();
 const API_URL = import.meta.env.VITE_REACT_APP_API_URL || 'http://localhost:5000';
 
-axios.defaults.baseURL = API_URL; // Set the base URL for all requests
-axios.defaults.withCredentials = true;
+// Configure apiClient defaults
+apiClient.defaults.baseURL = API_URL;
+apiClient.defaults.withCredentials = true;
 
 export const useAuth = () => {
   const context = useContext(AuthContext);
@@ -21,7 +22,7 @@ export const AuthProvider = ({ children }) => {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
 
   // Configure axios defaults
-  axios.defaults.withCredentials = true;
+  apiClient.defaults.withCredentials = true;
 
   useEffect(() => {
     checkAuthStatus();
@@ -29,7 +30,7 @@ export const AuthProvider = ({ children }) => {
 
   const checkAuthStatus = async () => {
     try {
-      const response = await axios.get('/api/auth/me');
+      const response = await apiClient.get('/api/auth/me');
       if (response.data.user) {
         setUser(response.data.user);
         setIsAuthenticated(true);
@@ -45,7 +46,7 @@ export const AuthProvider = ({ children }) => {
 
   const login = async (email, password, captcha) => {
     try {
-      const response = await axios.post('/api/auth/login', {
+      const response = await apiClient.post('/api/auth/login', {
         email,
         password,
         captcha
@@ -66,7 +67,7 @@ export const AuthProvider = ({ children }) => {
 
   const register = async (userData) => {
     try {
-      const response = await axios.post('/api/auth/register', userData);
+      const response = await apiClient.post('/api/auth/register', userData);
       
       if (response.data.user) {
         setUser(response.data.user);
@@ -83,7 +84,7 @@ export const AuthProvider = ({ children }) => {
 
   const logout = async () => {
     try {
-      await axios.post('/api/auth/logout');
+      await apiClient.post('/api/auth/logout');
     } catch (error) {
       console.error('Logout error:', error);
     } finally {
@@ -94,7 +95,7 @@ export const AuthProvider = ({ children }) => {
 
   const getCaptcha = async () => {
     try {
-      const response = await axios.get('/api/auth/captcha');
+      const response = await apiClient.get('/api/auth/captcha');
       return response.data.captcha;
     } catch (error) {
       console.error('Captcha error:', error);

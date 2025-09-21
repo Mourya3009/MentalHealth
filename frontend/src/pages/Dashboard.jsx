@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { useAuth } from '../contexts/AuthContext.jsx';
 import { useToast } from '../contexts/ToastContext.jsx';
-import axios from 'axios';
+import apiClient from '../utils/apiClient';
 
 const Dashboard = () => {
   const { user } = useAuth();
@@ -16,7 +16,7 @@ const Dashboard = () => {
 
   const fetchStats = async () => {
     try {
-      const response = await axios.get('/api/assessment/stats');
+      const response = await apiClient.get('/api/assessment/stats');
       setStats(response.data);
     } catch (err) {
       console.error('Error fetching stats:', err);

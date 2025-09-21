@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useToast } from '../contexts/ToastContext.jsx';
-import axios from 'axios';
+import apiClient from '../utils/apiClient';
 
 const Progress = () => {
   const [plotData, setPlotData] = useState(null);
@@ -14,7 +14,7 @@ const Progress = () => {
 
   const fetchPlotData = async () => {
     try {
-      const response = await axios.get('/api/plot/data');
+      const response = await apiClient.get('/api/plot/data');
       setPlotData(response.data);
     } catch (err) {
       console.error('Error fetching plot data:', err);
@@ -27,7 +27,7 @@ const Progress = () => {
   const generatePlots = async () => {
     setGenerating(true);
     try {
-      await axios.get('/api/plot/generate');
+      await apiClient.get('/api/plot/generate');
       success('Plots generated successfully!');
       // Refresh the data
       await fetchPlotData();

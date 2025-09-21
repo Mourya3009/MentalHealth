@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useToast } from '../contexts/ToastContext.jsx';
-import axios from 'axios';
+import apiClient from '../utils/apiClient';
 
 const Assessment = () => {
   const [formData, setFormData] = useState({
@@ -27,7 +27,7 @@ const Assessment = () => {
     setLoading(true);
 
     try {
-      const response = await axios.post('/api/assessment/submit', formData);
+      const response = await apiClient.post('/api/assessment/submit', formData);
       
       if (response.data) {
         success('Assessment submitted successfully!');
