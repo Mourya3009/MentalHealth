@@ -3,6 +3,11 @@ import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
 import User from "../models/User.js";
 import { generateToken } from "../middleware/auth.js";
+import cors from "cors";
+import dotenv from "dotenv";
+
+dotenv.config();
+
 
 const router = express.Router();
 
