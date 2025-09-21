@@ -1,8 +1,15 @@
 {
   "rewrites": [
     {
+      "source": "/api/(.*)",
+      "destination": "https://mentalhealth-zpq9.onrender.com/api/$1"
+    },
+    {
       "source": "/(.*)",
       "destination": "/index.html"
     }
-  ]
+  ],
+  "env": {
+    "VITE_REACT_APP_API_URL": "https://mentalhealth-zpq9.onrender.com"
+  }
 }

@@ -6,12 +6,13 @@ import tailwindcss from '@tailwindcss/vite'
 // https://vite.dev/config/
 export default defineConfig({
   plugins: [react(), tailwindcss()],
-  server: {
-    proxy: {
-      '/api': {
-        target: 'https://mentalhealth-zpq9.onrender.com', // Your backend server URL
-        changeOrigin: true,
-      },
-    },
-  },
+  // Remove proxy configuration for production deployment
+  // server: {
+  //   proxy: {
+  //     '/api': {
+  //       target: 'https://mentalhealth-zpq9.onrender.com',
+  //       changeOrigin: true,
+  //     },
+  //   },
+  // },
 })

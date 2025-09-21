@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { useToast } from '../contexts/ToastContext';
+import { useToast } from '../contexts/ToastContext.jsx';
 
 const SelfAnalysis = () => {
   const [formData, setFormData] = useState({

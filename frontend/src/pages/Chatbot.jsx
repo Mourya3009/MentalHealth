@@ -1,5 +1,5 @@
 import React, { useState, useRef, useEffect } from 'react';
-import { useToast } from '../contexts/ToastContext';
+import { useToast } from '../contexts/ToastContext.jsx';
 import axios from 'axios';
 
 const Chatbot = () => {
