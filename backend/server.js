@@ -29,7 +29,7 @@ app.use(cookieParser());
 
 // Serve static files
 app.use('/static', express.static('public/static'));
-
+  
 // Connect to MongoDB
 mongoose.connect(process.env.MONGODB_URI, {
   useNewUrlParser: true,
