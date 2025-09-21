@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useToast } from '../contexts/ToastContext';
 import axios from 'axios';
 
+const URL = 'http://localhost:5000/static';
 const Progress = () => {
   const [plotData, setPlotData] = useState(null);
   const [loading, setLoading] = useState(true);
@@ -166,7 +167,8 @@ const Progress = () => {
             </h2>
             <div className="flex justify-center items-center min-h-96 bg-slate-800/30 rounded-xl border border-slate-700">
               <img
-                src="/static/plot.png"
+                // src="http://localhost:5000/static/plot.png"
+                src={URL + '/plot.png'}
                 alt="Mental Health Trends"
                 className="max-w-full h-auto rounded-lg"
                 onError={(e) => {
@@ -194,7 +196,8 @@ const Progress = () => {
             </h2>
             <div className="flex justify-center items-center min-h-96 bg-slate-800/30 rounded-xl border border-slate-700">
               <img
-                src="/static/barplot.png"
+                // src="http://localhost:5000/static/barplot.png"
+                src={URL + '/barplot.png'}
                 alt="Mental Health Distribution"
                 className="max-w-full h-auto rounded-lg"
                 onError={(e) => {
