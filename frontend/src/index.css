@@ -47,6 +47,71 @@
   }
 }
 
+@keyframes messageAppear {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* For the typing indicator dots */
+@keyframes typing {
+    0%, 100% { 
+        transform: translateY(0);
+        opacity: 0.4;
+    }
+    50% { 
+        transform: translateY(-5px);
+        opacity: 1;
+    }
+}
+
+/* For general component fade-in effects */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+/* For components sliding in from the side */
+@keyframes slideIn {
+    from {
+        transform: translateX(-20px);
+        opacity: 0;
+    }
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+/* For the hover effect on buttons */
+@keyframes buttonPulse {
+    0%, 100% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.05);
+    }
+}
+
+/* For bouncing exercise step numbers */
+@keyframes bounce {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-5px);
+    }
+}
+
 @layer utilities {
   .text-shadow {
     text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
@@ -74,6 +139,29 @@
   @apply bg-slate-500;
 }
 
+.animate-messageAppear {
+  animation: messageAppear 0.5s ease-out forwards;
+}
+
+.animate-typing {
+  animation: typing 1s infinite;
+}
+
+.animate-fadeIn {
+  animation: fadeIn 1s ease-out;
+}
+
+.animate-slideIn {
+  animation: slideIn 0.5s ease-out forwards;
+}
+
+.hover\:animate-buttonPulse:hover {
+  animation: buttonPulse 1s infinite;
+}
+
+.animate-bounce-custom {
+  animation: bounce 1s infinite;
+}
 /* Loading animation */
 .loading-spinner {
   @apply animate-spin rounded-full border-4 border-slate-600 border-t-purple-500;

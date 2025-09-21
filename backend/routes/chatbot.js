@@ -1,6 +1,9 @@
 import express from "express";
 import { authenticateToken } from "../middleware/auth.js";
 import { GoogleGenerativeAI } from '@google/generative-ai';
+import dotenv from "dotenv";
+
+dotenv.config(); 
 
 const router = express.Router();
 
@@ -62,12 +65,8 @@ router.get("/suggestions", authenticateToken, (req, res) => {
     "I'm having trouble sleeping lately",
     "I feel lonely and isolated",
     "I'm stressed about my future",
-    "I'm having relationship problems",
     "I feel overwhelmed with school work",
-    "I'm struggling with self-confidence",
-    "I feel sad and don't know why",
-    "I'm having family issues",
-    "I feel like I'm not good enough"
+    "I'm struggling with self-confidence"   
   ];
 
   res.json({ suggestions });

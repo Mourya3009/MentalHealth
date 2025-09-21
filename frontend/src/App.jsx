@@ -18,6 +18,7 @@ import Exercises from './pages/Exercises';
 import Progress from './pages/Progress';
 import Support from './pages/Support';
 import SelfAnalysis from './pages/SelfAnalysis';
+import LLMchatbot from './pages/MentalHealthAssistant';
 
 // Toast notifications
 import ToastContainer from './components/ToastContainer';
@@ -65,6 +66,11 @@ function App() {
                 <Route path="/support" element={
                   <ProtectedRoute>
                     <Support />
+                  </ProtectedRoute>
+                } />
+                <Route path="/llmchatbot" element={
+                  <ProtectedRoute>
+                    <LLMchatbot />
                   </ProtectedRoute>
                 } />
                 <Route path="/self-analysis" element={

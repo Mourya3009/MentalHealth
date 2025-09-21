@@ -202,6 +202,20 @@ const Dashboard = () => {
           </Link>
 
           <Link
+            to="/llmchatbot"
+            className="card group hover:scale-105 transition-all duration-300"
+            style={{ animationDelay: '0.5s' }}
+          >
+            <div className="w-12 h-12 bg-gradient-to-r from-green-500 to-emerald-500 rounded-xl flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-300">
+              <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" />
+              </svg>
+            </div>
+            <h3 className="text-xl font-semibold text-white mb-2">Suggestions Chatbot</h3>
+            <p className="text-slate-400">Get immediate suggestions to make our mood better, and get exercise recommendations.</p>
+          </Link>
+
+          <Link
             to="/progress"
             className="card group hover:scale-105 transition-all duration-300"
           >
