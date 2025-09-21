@@ -1,0 +1,1 @@
+export const db_name = "mental_health_analysis_db";
