@@ -1,226 +1,179 @@
-# Mental Health Analysis Platform - MERN Stack
+# 🧠 MindCare - Mental Health Analysis Platform
 
-A comprehensive mental health support platform built with React, Node.js, Express, and MongoDB. This application provides AI-powered mental health assessments, chatbot support, progress tracking, and personalized exercise recommendations.
+A modern mental health support platform that provides AI-powered assessments, chatbot support, progress tracking, and personalized exercise recommendations.
 
-## Features
+**🌐 Live Demo:** [https://mindcare-psi.vercel.app/](https://mindcare-psi.vercel.app/)
 
-- **User Authentication**: Secure login/register with JWT tokens and captcha verification
-- **Mental Health Assessment**: 5-question comprehensive assessment with personalized recommendations
-- **AI Chatbot**: Google Gemini AI-powered mental health assistant
-- **Progress Tracking**: Visual analytics and trend tracking with Python-generated plots
-- **Exercise Recommendations**: Personalized exercises based on assessment results
-- **Support Resources**: Videos, blogs, movies, and crisis support information
-- **Self-Analysis**: Guided reflection questions for personal growth
-- **Responsive Design**: Modern UI with TailwindCSS and smooth animations
+![React](https://img.shields.io/badge/React-19.1.1-blue)
+![Node.js](https://img.shields.io/badge/Node.js-Express-green)
+![MongoDB](https://img.shields.io/badge/MongoDB-Database-green)
+![Live](https://img.shields.io/badge/Live-Vercel-brightgreen)
 
-## Tech Stack
+## ✨ Features
 
-### Frontend
-- React 18
-- TailwindCSS
-- React Router DOM
-- Axios
-- React Speech Kit
+- **🔐 Secure Authentication** - JWT tokens with captcha verification
+- **📊 Mental Health Assessment** - 5-question comprehensive evaluation
+- **🤖 AI Chatbot** - Google Gemini powered mental health assistant
+- **📈 Progress Tracking** - Interactive charts and analytics
+- **💪 Exercise Recommendations** - Personalized wellness plans with download option
+- **📱 Responsive Design** - Works perfectly on all devices
+- **🎨 Modern UI** - Dark theme with smooth animations
 
-### Backend
-- Node.js
-- Express.js
-- MongoDB with Mongoose
-- JWT Authentication
-- Google Gemini AI
-- Python (for data visualization)
+## 🛠 Tech Stack
 
-## Prerequisites
+**Frontend:** React, TailwindCSS, Vite, Axios  
+**Backend:** Node.js, Express, MongoDB, JWT  
+**AI:** Google Gemini API  
+**Deployment:** Vercel (Frontend) + Render (Backend)
 
-- Node.js (v16 or higher)
-- MongoDB
-- Python 3.x
+## 🚀 Quick Start
+
+### Prerequisites
+- Node.js (v18+)
+- MongoDB Atlas account
 - Google Gemini API Key
 
-## Installation
+### Installation
 
-### 1. Clone the repository
+1. **Clone the repository**
 ```bash
-git clone <repository-url>
+git clone https://github.com/yourusername/mental-health-analysis.git
 cd mental-health-analysis
 ```
 
-### 2. Backend Setup
+2. **Backend Setup**
 ```bash
 cd backend
 npm install
 ```
 
-Create a `.env` file in the backend directory:
+Create `.env` file:
 ```env
 PORT=5000
-MONGODB_URI=mongodb://127.0.0.1:27017/Mental-Health
-JWT_SECRET=your_jwt_secret_key_here
+MONGODB_URI=mongodb+srv://username:password@cluster.mongodb.net/mental-health
+JWT_SECRET=your_jwt_secret_here
 GEMINI_API_KEY=your_gemini_api_key_here
-FRONTEND_URL=http://localhost:3000
+FRONTEND_URL=https://mindcare-psi.vercel.app
+NODE_ENV=production
 ```
 
-### 3. Frontend Setup
+3. **Frontend Setup**
 ```bash
 cd frontend
 npm install
 ```
 
-### 4. Python Dependencies
+Create `.env.local` file:
+```env
+VITE_REACT_APP_API_URL=https://mentalhealth-zpq9.onrender.com
+```
+
+4. **Run Locally**
 ```bash
-pip install matplotlib numpy
+# Backend
+cd backend && npm run dev
+
+# Frontend  
+cd frontend && npm run dev
 ```
 
-## Running the Application
+## 🌐 Deployment
 
-### 1. Start MongoDB
-Make sure MongoDB is running on your system.
+### Frontend (Vercel)
+- **Live URL:** [https://mindcare-psi.vercel.app/](https://mindcare-psi.vercel.app/)
+- Connected to GitHub repository
+- Automatic deployment on push to main branch
+- Environment variable: `VITE_REACT_APP_API_URL=https://mentalhealth-zpq9.onrender.com`
 
-### 2. Start the Backend
-```bash
-cd backend
-npm run dev
-```
-The backend will run on http://localhost:5000
+### Backend (Render)
+- **API URL:** https://mentalhealth-zpq9.onrender.com
+- Connected to GitHub repository
+- Automatic deployment on push to main branch
+- Environment variables configured for production
 
-### 3. Start the Frontend
-```bash
-cd frontend
-npm start
-```
-The frontend will run on http://localhost:3000
+### Database (MongoDB Atlas)
+- Cloud-hosted MongoDB database
+- Secure connection with authentication
+- Production-ready with proper indexing
 
-## API Endpoints
-
-### Authentication
-- `POST /api/auth/register` - User registration
-- `POST /api/auth/login` - User login
-- `POST /api/auth/logout` - User logout
-- `GET /api/auth/captcha` - Get captcha for login
-- `GET /api/auth/me` - Get current user
-
-### Assessment
-- `POST /api/assessment/submit` - Submit mental health assessment
-- `GET /api/assessment/latest` - Get latest assessment
-- `GET /api/assessment/stats` - Get assessment statistics
-
-### Chatbot
-- `POST /api/chatbot/chat` - Chat with AI assistant
-- `GET /api/chatbot/suggestions` - Get conversation suggestions
-
-### Progress
-- `GET /api/plot/generate` - Generate progress plots
-- `GET /api/plot/data` - Get plot data
-
-### User
-- `GET /api/user/profile` - Get user profile
-- `PUT /api/user/profile` - Update user profile
-- `GET /api/user/assessments` - Get user assessment history
-
-## Project Structure
-
-```
-Mental-Health-Analysis-main/
-├── backend/                    # Node.js/Express API Server
-│   ├── models/
-│   │   └── User.js            # MongoDB User model
-│   ├── routes/
-│   │   ├── auth.js            # Authentication routes
-│   │   ├── user.js            # User management routes
-│   │   ├── assessment.js      # Mental health assessment routes
-│   │   ├── chatbot.js         # AI chatbot routes
-│   │   └── plot.js            # Progress tracking routes
-│   ├── middleware/
-│   │   └── auth.js            # JWT authentication middleware
-│   ├── scripts/
-│   │   └── plot.py            # Python script for data visualization
-│   ├── public/
-│   │   └── static/            # Generated plot images
-│   ├── config.env             # Environment variables
-│   ├── server.js              # Express server entry point
-│   └── package.json           # Backend dependencies
-├── frontend/                   # React Application
-│   ├── src/
-│   │   ├── components/
-│   │   │   ├── Navbar.js      # Navigation component
-│   │   │   ├── ProtectedRoute.js # Route protection
-│   │   │   └── ToastContainer.js # Toast notifications
-│   │   ├── contexts/
-│   │   │   ├── AuthContext.js # Authentication context
-│   │   │   └── ToastContext.js # Toast context
-│   │   ├── pages/
-│   │   │   ├── Home.js        # Landing page
-│   │   │   ├── Login.js       # Login page
-│   │   │   ├── Register.js    # Registration page
-│   │   │   ├── Dashboard.js   # User dashboard
-│   │   │   ├── Assessment.js  # Mental health assessment
-│   │   │   ├── Chatbot.js     # AI chatbot interface
-│   │   │   ├── Exercises.js   # Exercise recommendations
-│   │   │   ├── Progress.js    # Progress tracking
-│   │   │   ├── Support.js     # Support resources
-│   │   │   └── SelfAnalysis.js # Self-analysis form
-│   │   ├── App.js             # Main app component
-│   │   ├── index.js           # React entry point
-│   │   └── index.css          # Global styles with Tailwind
-│   ├── tailwind.config.js     # TailwindCSS configuration
-│   ├── postcss.config.js      # PostCSS configuration
-│   └── package.json           # Frontend dependencies
-└── README.md                  # Project documentation
-```
-
-## Key Features Explained
+## 📚 Key Features
 
 ### Mental Health Assessment
-- 5-question assessment covering stress, sleep, mood, social interaction, and academic pressure
-- Scores range from 1-5 for each question
-- Average score determines exercise recommendations
-- Results stored in MongoDB for progress tracking
+- 5 questions covering stress, sleep, mood, social interaction, and academic pressure
+- Real-time scoring (1-5 scale)
+- Personalized exercise recommendations based on results
 
 ### AI Chatbot
-- Powered by Google Gemini AI
-- Provides empathetic mental health support
-- Includes conversation suggestions
+- Google Gemini AI integration
+- Empathetic mental health support
+- Conversation suggestions
 - Text-to-speech functionality
 
 ### Progress Tracking
-- Python-generated line and bar charts
-- Trend analysis (improving, declining, stable)
+- Interactive SVG charts (no Python dependencies)
+- Trend analysis (improving/declining/stable)
 - Assessment history and statistics
-- Visual progress representation
 
 ### Exercise Recommendations
-- Personalized based on assessment scores
-- Different exercise types: congratulations, low, moderate, improvement, confidence
-- Comprehensive wellness strategies
-- Links to external resources
+- Personalized plans based on assessment scores
+- Downloadable text files with complete recommendations
+- Multiple categories: congratulations, low, moderate, improvement, confidence
 
-## Security Features
+## 🔒 Security Features
 
-- JWT token authentication
+- JWT authentication with secure cookies
 - Password hashing with bcrypt
-- Captcha verification for login
+- CORS configuration for production
+- Captcha verification
 - Protected routes
-- Input validation and sanitization
+- Input validation
 
-## Contributing
+## 🎯 Try It Out
+
+Visit [https://mindcare-psi.vercel.app/](https://mindcare-psi.vercel.app/) to:
+
+1. **Register** for a new account
+2. **Take the assessment** to get personalized recommendations
+3. **Chat with the AI** for mental health support
+4. **Track your progress** with interactive charts
+5. **Download exercise plans** for offline reference
+
+## 🤝 Contributing
 
 1. Fork the repository
-2. Create a feature branch
-3. Commit your changes
-4. Push to the branch
-5. Create a Pull Request
+2. Create feature branch: `git checkout -b feature/amazing-feature`
+3. Commit changes: `git commit -m 'Add amazing feature'`
+4. Push to branch: `git push origin feature/amazing-feature`
+5. Open Pull Request
 
-## License
+## 📄 License
 
 This project is licensed under the ISC License.
 
-## Support
+## 🆘 Support
 
-For support, email support@mindcare.com or create an issue in the repository.
+- 📧 Email: support@mindcare.com
+- 🐛 Issues: [GitHub Issues](https://github.com/yourusername/mental-health-analysis/issues)
 
-## Acknowledgments
+### Crisis Support
+- **National Suicide Prevention Lifeline**: 988
+- **Crisis Text Line**: Text HOME to 741741
+- **Emergency Services**: 911
 
-- Google Gemini AI for chatbot functionality
+## 🙏 Acknowledgments
+
+- Google Gemini AI for chatbot capabilities
 - TailwindCSS for styling
-- React community for excellent documentation
-- Mental health professionals for guidance on assessment questions
+- React community for documentation
+- Mental health professionals for guidance
+
+---
+
+<div align="center">
+
+**Made with ❤️ for Mental Health Awareness**
+
+[![Live Demo](https://img.shields.io/badge/Live%20Demo-Visit%20Now-green?style=for-the-badge)](https://mindcare-psi.vercel.app/)
+[![GitHub stars](https://img.shields.io/github/stars/yourusername/mental-health-analysis?style=social)](https://github.com/yourusername/mental-health-analysis)
+
+</div>
